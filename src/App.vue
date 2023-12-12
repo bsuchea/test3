@@ -1,19 +1,19 @@
 
 <template>
-  <section>
-    <h2>Assigments Undone ({{ assigments.filter(a => !a.completed).length }})</h2>
+  <section v-show="undoneAssigments.length">
+    <h2>Assigments Undone ({{ undoneAssigments.length }})</h2>
     <ul>
-      <li v-for="ret in assigments.filter(a => !a.completed)" :key="ret.id"> 
+      <li v-for="ret in undoneAssigments" :key="ret.id"> 
         {{ ret.name }} 
         <input type="checkbox" v-model="ret.completed">
       </li>
     </ul>
   </section>
   <br>
-  <section>
-    <h2>Assigments done ({{ assigments.filter(a => a.completed).length }})</h2>
+  <section v-if="doneAssigments.length > 0">
+    <h2>Assigments done ({{ doneAssigments.length }})</h2>
     <ul>
-      <li v-for="ret in assigments.filter(a => a.completed)" :key="ret.id"> 
+      <li v-for="ret in doneAssigments" :key="ret.id"> 
         {{ ret.name }} 
         <input type="checkbox" v-model="ret.completed">
       </li>
@@ -30,6 +30,14 @@ export default{
         {id: 3, name: 'Marketing project', completed: false},
         {id: 4, name: 'Vue Projects', completed: false},
       ]
+    }
+  },
+  computed:{
+    doneAssigments(){
+      return this.assigments.filter(a => a.completed)
+    },
+    undoneAssigments(){
+      return this.assigments.filter(a => !a.completed)
     }
   }
 }
