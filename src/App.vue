@@ -1,45 +1,32 @@
-
-<template>
-  <section v-show="undoneAssigments.length">
-    <h2>Assigments Undone ({{ undoneAssigments.length }})</h2>
-    <ul>
-      <li v-for="ret in undoneAssigments" :key="ret.id"> 
-        {{ ret.name }} 
-        <input type="checkbox" v-model="ret.completed">
-      </li>
-    </ul>
-  </section>
-  <br>
-  <section v-if="doneAssigments.length > 0">
-    <h2>Assigments done ({{ doneAssigments.length }})</h2>
-    <ul>
-      <li v-for="ret in doneAssigments" :key="ret.id"> 
-        {{ ret.name }} 
-        <input type="checkbox" v-model="ret.completed">
-      </li>
-    </ul>
-  </section>
-</template>
 <script>
-export default{
-  data() {
-    return {
-      assigments: [
-        {id: 1, name: 'Web application', completed: false},
-        {id: 2, name: 'Desktop with c#', completed: false},
-        {id: 3, name: 'Marketing project', completed: false},
-        {id: 4, name: 'Vue Projects', completed: false},
-      ]
-    }
-  },
-  computed:{
-    doneAssigments(){
-      return this.assigments.filter(a => a.completed)
-    },
-    undoneAssigments(){
-      return this.assigments.filter(a => !a.completed)
-    }
+import { RouterLink, RouterView } from 'vue-router'
+export default {
+  components: {
+    RouterLink,
+    RouterView
   }
 }
-
 </script>
+
+<template>
+  <header>
+    <div class="wrapper">
+      <h1 class="text-5xl text-blue-600">Hello to Vue</h1>
+    </div>
+  </header>
+  <div class="grid grid-cols-4 gap-4 h-screen">
+    <div class="bg-cyan-50 rounded-sm shadow-md">
+      <nav class="flex flex-col">
+        <RouterLink to="/" class="py-3 px-4 rounded-sm hover:bg-cyan-500 hover:text-white" >Home</RouterLink>
+        <RouterLink to="/testComputedProperties" class="py-3 px-4 rounded-sm hover:bg-cyan-500 hover:text-white">Computed Properties</RouterLink>
+      </nav>
+    </div>
+    <div class="col-span-3">
+      <main class="p-5 shadow-md border-t-2 border-gray-50 rounded-sm">
+        <RouterView />
+      </main>
+    </div>
+  </div>
+
+  
+</template>
