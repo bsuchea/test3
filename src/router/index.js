@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/testComputedProperty.vue')
     },
     {
+      path: '/usingModel',
+      name: 'usingModel',
+      component: () => import('../views/usingModel.vue')
+    },
+    {
       path: '/blog',
       name: 'blog',
       component: () => import('../views/Blog.vue')

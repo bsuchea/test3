@@ -18,6 +18,7 @@ export default {
     <div class="bg-cyan-50 rounded-sm shadow-md">
       <nav class="flex flex-col">
         <RouterLink to="/" class="py-3 px-4 rounded-sm hover:bg-cyan-500 hover:text-white" >Home</RouterLink>
+        <RouterLink to="/usingModel" class="py-3 px-4 rounded-sm hover:bg-cyan-500 hover:text-white">Using Model</RouterLink>
         <RouterLink to="/testComputedProperties" class="py-3 px-4 rounded-sm hover:bg-cyan-500 hover:text-white">Computed Properties</RouterLink>
       </nav>
     </div>
